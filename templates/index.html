@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Predicción</title>
+    <!-- Vincula el archivo CSS utilizando url_for -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <h1>Formulario de Predicción de Ingreso Universitario</h1>
+
+    <form action="/predecir" method="POST">
+        <!-- Tipo de Colegio (desplegable con opciones procesadas) -->
+        <label for="TIPO_COLEGIO">Tipo de Colegio:</label>
+        <select name="TIPO_COLEGIO" id="TIPO_COLEGIO" required>
+            <option value="PÚBLICA DE GESTIÓN DIRECTA">PÚBLICA DE GESTIÓN DIRECTA</option>
+            <option value="PÚBLICA NO GESTIÓN DIRECTA">PÚBLICA NO GESTIÓN DIRECTA</option>
+            <option value="PRIVADA">PRIVADA</option>
+        </select><br><br>
+
+        <!-- Colegio de Procedencia (campo de texto) -->
+        <label for="COLEGIO_PROCEDENCIA">Colegio de Procedencia:</label>
+        <input type="text" name="COLEGIO_PROCEDENCIA" id="COLEGIO_PROCEDENCIA" placeholder="Ingresa el nombre del colegio" required><br><br>
+
+        <!-- Ubigeo del Colegio (campo de texto) -->
+        <label for="UBIGEO_COLEGIO">Ubigeo del Colegio:</label>
+        <input type="text" name="UBIGEO_COLEGIO" id="UBIGEO_COLEGIO" placeholder="Ingresa el ubigeo" required><br><br>
+
+        <!-- Año de Egreso del Colegio (campo de texto) -->
+        <label for="ANIO_EGRESO_COLEGIO">Año de Egreso del Colegio:</label>
+        <input type="number" name="ANIO_EGRESO_COLEGIO" id="ANIO_EGRESO_COLEGIO" placeholder="Ingresa el año de egreso" required><br><br>
+
+        <!-- Departamento del Colegio (campo de texto) -->
+        <label for="DEPARTAMENTO_COLEGIO">Departamento del Colegio:</label>
+        <input type="text" name="DEPARTAMENTO_COLEGIO" id="DEPARTAMENTO_COLEGIO" placeholder="Ingresa el departamento" required><br><br>
+
+        <!-- Provincia del Colegio (campo de texto) -->
+        <label for="PROVINCIA_COLEGIO">Provincia del Colegio:</label>
+        <input type="text" name="PROVINCIA_COLEGIO" id="PROVINCIA_COLEGIO" placeholder="Ingresa la provincia" required><br><br>
+
+        <!-- Distrito del Colegio (campo de texto) -->
+        <label for="DISTRITO_COLEGIO">Distrito del Colegio:</label>
+        <input type="text" name="DISTRITO_COLEGIO" id="DISTRITO_COLEGIO" placeholder="Ingresa el distrito" required><br><br>
+
+        <!-- Botón para enviar el formulario -->
+        <input type="submit" value="Predecir">
+    </form>
+
+    {% if resultado %}
+        <h2>Resultado de la Predicción: {{ resultado }}</h2>
+    {% endif %}
+</body>
+</html>
